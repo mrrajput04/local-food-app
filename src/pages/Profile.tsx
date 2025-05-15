@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "@/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useLanguage } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Package } from "lucide-react";
@@ -54,14 +54,14 @@ export default function Profile() {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             toast({
-                // title: getTranslation("success", language),
-                // description: getTranslation("profileUpdated", language),
+                title: getTranslation("success", language),
+                description: getTranslation("profileUpdated", language),
             });
         } catch (error) {
             console.error("Profile update error:", error);
             toast({
-                // title: getTranslation("error", language),
-                // description: getTranslation("updateFailed", language),
+                title: getTranslation("error", language),
+                description: getTranslation("updateFailed", language),
                 variant: "destructive",
             });
         } finally {
@@ -72,8 +72,8 @@ export default function Profile() {
     const handleLogout = () => {
         // Mock logout - in a real app, this would clear authentication state
         toast({
-            // title: getTranslation("success", language),
-            // description: getTranslation("logoutSuccessful", language),
+            title: getTranslation("success", language),
+            description: getTranslation("logoutSuccessful", language),
         });
         navigate("/");
     };
@@ -85,9 +85,9 @@ export default function Profile() {
             <main className="flex-1 py-10">
                 <div className="container max-w-4xl">
                     <div className="flex items-center justify-between mb-6">
-                        {/* <h1 className="text-3xl font-bold">{getTranslation("myProfile", language)}</h1> */}
+                        <h1 className="text-3xl font-bold">{getTranslation("myProfile", language)}</h1>
                         <Button variant="outline" onClick={handleLogout}>
-                            {/* {getTranslation("logout", language)} */}
+                            {getTranslation("logout", language)}
                         </Button>
                     </div>
 
@@ -106,8 +106,8 @@ export default function Profile() {
                                     </Avatar>
                                     <div className="text-center">
                                         <h2 className="text-xl font-semibold">{formData.name}</h2>
-                                        {/* <p className="text-muted-foreground">{formData.role === "consumer" ? 
-                                            // getTranslation("consumer", language) : getTranslation("producer", language)}</p> */}
+                                        <p className="text-muted-foreground">{formData.role === "consumer" ?
+                                            getTranslation("consumer", language) : getTranslation("producer", language)}</p>
                                         <p className="text-sm text-muted-foreground mt-1">{formData.location}</p>
                                     </div>
                                 </CardContent>
@@ -115,7 +115,7 @@ export default function Profile() {
 
                             <Card>
                                 <CardHeader className="pb-3">
-                                    {/* <CardTitle>{getTranslation("account", language)}</CardTitle> */}
+                                    <CardTitle>{getTranslation("account", language)}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-2">
                                     <Link
@@ -123,7 +123,7 @@ export default function Profile() {
                                         className="flex items-center gap-3 p-2 hover:bg-muted rounded-md transition-colors cursor-pointer"
                                     >
                                         <Package size={18} />
-                                        {/* <span>{getTranslation("myOrders", language)}</span> */}
+                                        <span>{getTranslation("myOrders", language)}</span>
                                     </Link>
                                 </CardContent>
                             </Card>
@@ -131,13 +131,13 @@ export default function Profile() {
 
                         <Card>
                             <CardHeader>
-                                {/* <CardTitle>{getTranslation("personalInformation", language)}</CardTitle> */}
-                                {/* <CardDescription>{getTranslation("updateProfileInfo", language)}</CardDescription> */}
+                                <CardTitle>{getTranslation("personalInformation", language)}</CardTitle>
+                                <CardDescription>{getTranslation("updateProfileInfo", language)}</CardDescription>
                             </CardHeader>
                             <form onSubmit={handleSave}>
                                 <CardContent className="space-y-4">
                                     <div className="space-y-2">
-                                        {/* <Label htmlFor="name">{getTranslation("fullName", language)}</Label> */}
+                                        <Label htmlFor="name">{getTranslation("fullName", language)}</Label>
                                         <Input
                                             id="name"
                                             name="name"
@@ -146,7 +146,7 @@ export default function Profile() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        {/* <Label htmlFor="email">{getTranslation("email", language)}</Label> */}
+                                        <Label htmlFor="email">{getTranslation("email", language)}</Label>
                                         <Input
                                             id="email"
                                             name="email"
@@ -156,7 +156,7 @@ export default function Profile() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        {/* <Label htmlFor="phone">{getTranslation("phone", language)}</Label> */}
+                                        <Label htmlFor="phone">{getTranslation("phone", language)}</Label>
                                         <Input
                                             id="phone"
                                             name="phone"
@@ -166,7 +166,7 @@ export default function Profile() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        {/* <Label htmlFor="location">{getTranslation("location", language)}</Label> */}
+                                        <Label htmlFor="location">{getTranslation("location", language)}</Label>
                                         <Input
                                             id="location"
                                             name="location"
@@ -176,22 +176,22 @@ export default function Profile() {
                                     </div>
                                     <Separator />
                                     <div className="space-y-2">
-                                        {/* <Label>{getTranslation("role", language)}</Label> */}
+                                        <Label>{getTranslation("role", language)}</Label>
                                         <RadioGroup value={formData.role} onValueChange={handleRoleChange}>
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="consumer" id="profile-consumer" />
-                                                {/* <Label htmlFor="profile-consumer">{getTranslation("consumer", language)}</Label> */}
+                                                <Label htmlFor="profile-consumer">{getTranslation("consumer", language)}</Label>
                                             </div>
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="producer" id="profile-producer" />
-                                                {/* <Label htmlFor="profile-producer">{getTranslation("producer", language)}</Label> */}
+                                                <Label htmlFor="profile-producer">{getTranslation("producer", language)}</Label>
                                             </div>
                                         </RadioGroup>
                                     </div>
                                 </CardContent>
                                 <CardFooter>
                                     <Button className="bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={isLoading}>
-                                        {/* {isLoading ? getTranslation("saving", language) : getTranslation("saveChanges", language)} */}
+                                        {isLoading ? getTranslation("saving", language) : getTranslation("saveChanges", language)}
                                     </Button>
                                 </CardFooter>
                             </form>

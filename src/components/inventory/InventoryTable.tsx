@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 import { Switch } from "@/components/ui/switch";
 import {
     Table,
@@ -36,9 +36,9 @@ const InventoryTable = () => {
         const product = products.find(p => p.id === productId);
         if (product) {
             const status = !product.inStock ? "available" : "outOfStock";
-            // toast.success(
-            //     `${product.name} ${getTranslation("isNow", language)} ${getTranslation(status, language)}`
-            // );
+            toast.success(
+                `${product.name} ${getTranslation("isNow", language)} ${getTranslation(status, language)}`
+            );
         }
     };
 
@@ -46,11 +46,11 @@ const InventoryTable = () => {
         <div>
             <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between">
                 <h3 className="text-xl font-semibold">
-                    {/* {getTranslation("productsInventory", language)} */}
+                    {getTranslation("productsInventory", language)}
                 </h3>
                 <div className="mt-2 sm:mt-0">
                     <span className="text-sm text-muted-foreground">
-                        {/* {products.filter(p => p.inStock).length} {getTranslation("itemsInStock", language)} */}
+                        {products.filter(p => p.inStock).length} {getTranslation("itemsInStock", language)}
                     </span>
                 </div>
             </div>
@@ -59,10 +59,10 @@ const InventoryTable = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            {/* <TableHead>{getTranslation("product", language)}</TableHead>
+                            <TableHead>{getTranslation("product", language)}</TableHead>
                             <TableHead className="hidden sm:table-cell">{getTranslation("category", language)}</TableHead>
                             <TableHead>{getTranslation("price", language)}</TableHead>
-                            <TableHead className="text-right">{getTranslation("availability", language)}</TableHead> */}
+                            <TableHead className="text-right">{getTranslation("availability", language)}</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -80,14 +80,14 @@ const InventoryTable = () => {
                                         <div>
                                             <div>{product.name}</div>
                                             <div className="text-sm text-muted-foreground sm:hidden">
-                                                {/* {getTranslation(product.category, language)} */}
+                                                {getTranslation(product.category, language)}
                                             </div>
                                         </div>
                                     </div>
                                 </TableCell>
                                 <TableCell className="hidden sm:table-cell">
                                     <Badge variant="outline">
-                                        {/* {getTranslation(product.category, language)} */}
+                                        {getTranslation(product.category, language)}
                                     </Badge>
                                 </TableCell>
                                 <TableCell>${product.price.toFixed(2)}/{product.unit}</TableCell>
@@ -95,8 +95,8 @@ const InventoryTable = () => {
                                     <div className="flex items-center justify-end gap-2">
                                         <span className={`text-sm ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
                                             {product.inStock
-                                                // ? getTranslation("available", language)
-                                                // : getTranslation("outOfStock", language)
+                                                ? getTranslation("available", language)
+                                                : getTranslation("outOfStock", language)
                                             }
                                         </span>
                                         <Switch

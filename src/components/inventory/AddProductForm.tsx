@@ -5,7 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -80,13 +80,13 @@ export default function AddProductForm() {
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
             // Show success message
-            // toast.success(getTranslation("productAddedSuccess", language));
+            toast.success(getTranslation("productAddedSuccess", language));
 
             // Reset form
             form.reset(defaultValues);
         } catch (error) {
             console.error("Error adding product:", error);
-            // toast.error(getTranslation("productAddedError", language));
+            toast.error(getTranslation("productAddedError", language));
         } finally {
             setIsSubmitting(false);
         }
@@ -94,7 +94,7 @@ export default function AddProductForm() {
 
     return (
         <div className="p-6 border rounded-lg bg-white">
-            {/* <h2 className="text-xl font-semibold mb-4">{getTranslation("addNewProduct", language)}</h2> */}
+            <h2 className="text-xl font-semibold mb-4">{getTranslation("addNewProduct", language)}</h2>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -105,9 +105,9 @@ export default function AddProductForm() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    {/* <FormLabel>{getTranslation("productName", language)}</FormLabel> */}
+                                    <FormLabel>{getTranslation("productName", language)}</FormLabel>
                                     <FormControl>
-                                        {/* <Input placeholder={getTranslation("productNamePlaceholder", language)} {...field} /> */}
+                                        <Input placeholder={getTranslation("productNamePlaceholder", language)} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -121,7 +121,7 @@ export default function AddProductForm() {
                                 name="price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        {/* <FormLabel>{getTranslation("price", language)}</FormLabel> */}
+                                        <FormLabel>{getTranslation("price", language)}</FormLabel>
                                         <FormControl>
                                             <Input type="number" step="0.01" placeholder="0.00" {...field} />
                                         </FormControl>
@@ -135,11 +135,11 @@ export default function AddProductForm() {
                                 name="unit"
                                 render={({ field }) => (
                                     <FormItem>
-                                        {/* <FormLabel>{getTranslation("unit", language)}</FormLabel> */}
+                                        <FormLabel>{getTranslation("unit", language)}</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
                                                 <SelectTrigger>
-                                                    {/* <SelectValue placeholder={getTranslation("selectUnit", language)} /> */}
+                                                    <SelectValue placeholder={getTranslation("selectUnit", language)} />
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
@@ -162,20 +162,20 @@ export default function AddProductForm() {
                             name="category"
                             render={({ field }) => (
                                 <FormItem>
-                                    {/* <FormLabel>{getTranslation("category", language)}</FormLabel> */}
+                                    <FormLabel>{getTranslation("category", language)}</FormLabel>
                                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                                         <FormControl>
                                             <SelectTrigger>
-                                                {/* <SelectValue placeholder={getTranslation("selectCategory", language)} /> */}
+                                                <SelectValue placeholder={getTranslation("selectCategory", language)} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                            {/* <SelectItem value="vegetables">{getTranslation("vegetables", language)}</SelectItem>
+                                            <SelectItem value="vegetables">{getTranslation("vegetables", language)}</SelectItem>
                                             <SelectItem value="fruits">{getTranslation("fruits", language)}</SelectItem>
                                             <SelectItem value="dairy">{getTranslation("dairy", language)}</SelectItem>
                                             <SelectItem value="meat">{getTranslation("meat", language)}</SelectItem>
                                             <SelectItem value="bakery">{getTranslation("bakery", language)}</SelectItem>
-                                            <SelectItem value="other">{getTranslation("other", language)}</SelectItem> */}
+                                            <SelectItem value="other">{getTranslation("other", language)}</SelectItem>
                                         </SelectContent>
                                     </Select>
                                     <FormMessage />
@@ -189,7 +189,7 @@ export default function AddProductForm() {
                             name="imageUrl"
                             render={({ field }) => (
                                 <FormItem>
-                                    {/* <FormLabel>{getTranslation("imageUrl", language)}</FormLabel> */}
+                                    <FormLabel>{getTranslation("imageUrl", language)}</FormLabel>
                                     <FormControl>
                                         <Input placeholder="https://..." {...field} />
                                     </FormControl>
@@ -205,10 +205,10 @@ export default function AddProductForm() {
                         name="description"
                         render={({ field }) => (
                             <FormItem>
-                                {/* <FormLabel>{getTranslation("description", language)}</FormLabel> */}
+                                <FormLabel>{getTranslation("description", language)}</FormLabel>
                                 <FormControl>
                                     <Textarea
-                                        // placeholder={getTranslation("productDescriptionPlaceholder", language)}
+                                        placeholder={getTranslation("productDescriptionPlaceholder", language)}
                                         {...field}
                                         className="min-h-[120px]"
                                     />
@@ -220,7 +220,7 @@ export default function AddProductForm() {
 
                     {/* Product Properties */}
                     <div className="space-y-4 pt-4">
-                        {/* <h3 className="text-md font-medium">{getTranslation("productProperties", language)}</h3> */}
+                        <h3 className="text-md font-medium">{getTranslation("productProperties", language)}</h3>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <FormField
@@ -229,7 +229,7 @@ export default function AddProductForm() {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
                                         <div className="space-y-0.5">
-                                            {/* <FormLabel>{getTranslation("organic", language)}</FormLabel> */}
+                                            <FormLabel>{getTranslation("organic", language)}</FormLabel>
                                         </div>
                                         <FormControl>
                                             <Switch
@@ -247,7 +247,7 @@ export default function AddProductForm() {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
                                         <div className="space-y-0.5">
-                                            {/* <FormLabel>{getTranslation("seasonal", language)}</FormLabel> */}
+                                            <FormLabel>{getTranslation("seasonal", language)}</FormLabel>
                                         </div>
                                         <FormControl>
                                             <Switch
@@ -265,7 +265,7 @@ export default function AddProductForm() {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
                                         <div className="space-y-0.5">
-                                            {/* <FormLabel>{getTranslation("locallyGrown", language)}</FormLabel> */}
+                                            <FormLabel>{getTranslation("locallyGrown", language)}</FormLabel>
                                         </div>
                                         <FormControl>
                                             <Switch
@@ -283,7 +283,7 @@ export default function AddProductForm() {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3">
                                         <div className="space-y-0.5">
-                                            {/* <FormLabel>{getTranslation("inStock", language)}</FormLabel> */}
+                                            <FormLabel>{getTranslation("inStock", language)}</FormLabel>
                                         </div>
                                         <FormControl>
                                             <Switch
@@ -299,11 +299,11 @@ export default function AddProductForm() {
 
                     {/* Preview */}
                     <div className="pt-4">
-                        {/* <p className="text-sm text-muted-foreground mb-2">{getTranslation("imagePreview", language)}</p> */}
+                        <p className="text-sm text-muted-foreground mb-2">{getTranslation("imagePreview", language)}</p>
                         <div className="aspect-square w-full max-w-[200px] overflow-hidden rounded-lg border">
                             <img
                                 src={form.watch("imageUrl") || defaultValues.imageUrl}
-                                // alt={getTranslation("productPreview", language)}
+                                alt={getTranslation("productPreview", language)}
                                 className="h-full w-full object-cover"
                             />
                         </div>
@@ -315,7 +315,7 @@ export default function AddProductForm() {
                         className="w-full md:w-auto bg-farm-green hover:bg-farm-green-dark"
                         disabled={isSubmitting}
                     >
-                        {/* {isSubmitting ? getTranslation("addingProduct", language) : getTranslation("addProduct", language)} */}
+                        {isSubmitting ? getTranslation("addingProduct", language) : getTranslation("addProduct", language)}
                     </Button>
                 </form>
             </Form>

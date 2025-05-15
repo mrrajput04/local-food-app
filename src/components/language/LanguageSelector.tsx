@@ -1,6 +1,6 @@
 
 import { useLanguage, Language } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 import { Check } from "lucide-react";
 
 const languageOptions: { value: Language; label: string; nativeLabel: string }[] = [

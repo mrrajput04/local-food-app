@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -35,16 +35,16 @@ export default function Login() {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             toast({
-                // title: getTranslation("success", language),
-                // description: getTranslation("loginSuccessful", language),
+                title: getTranslation("success", language),
+                description: getTranslation("loginSuccessful", language),
             });
 
             navigate("/profile");
         } catch (error) {
             console.error("Login error:", error);
             toast({
-                // title: getTranslation("error", language),
-                // description: getTranslation("loginFailed", language),
+                title: getTranslation("error", language),
+                description: getTranslation("loginFailed", language),
                 variant: "destructive",
             });
         } finally {
@@ -57,17 +57,17 @@ export default function Login() {
             <Card>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold text-center">
-                        {/* {getTranslation("login", language)} */}
+                        {getTranslation("login", language)}
                     </CardTitle>
                     <CardDescription className="text-center">
-                        {/* {getTranslation("enterCredentials", language)} */}
+                        {getTranslation("enterCredentials", language)}
                     </CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="email">
-                                {/* {getTranslation("email", language)} */}
+                                {getTranslation("email", language)}
                             </Label>
                             <Input
                                 id="email"
@@ -81,7 +81,7 @@ export default function Login() {
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="password">
-                                {/* {getTranslation("password", language)} */}
+                                {getTranslation("password", language)}
                             </Label>
                             <Input
                                 id="password"
@@ -94,18 +94,18 @@ export default function Login() {
                         </div>
                         <div className="text-right">
                             <Link to="/auth/forgot-password" className="text-sm text-farm-green hover:underline">
-                                {/* {getTranslation("forgotPassword", language)} */}
+                                {getTranslation("forgotPassword", language)}
                             </Link>
                         </div>
                     </CardContent>
                     <CardFooter className="flex flex-col">
                         <Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={isLoading}>
-                            {/* {isLoading ? getTranslation("loggingIn", language) : getTranslation("login", language)} */}
+                            {isLoading ? getTranslation("loggingIn", language) : getTranslation("login", language)}
                         </Button>
                         <div className="mt-4 text-center text-sm">
-                            {/* {getTranslation("noAccount", language)}{" "} */}
+                            {getTranslation("noAccount", language)}{" "}
                             <Link to="/auth/signup" className="text-farm-green hover:underline">
-                                {/* {getTranslation("signUp", language)} */}
+                                {getTranslation("signUp", language)}
                             </Link>
                         </div>
                     </CardFooter>

@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 
 type UserRole = "consumer" | "producer";
 
@@ -41,8 +41,8 @@ export default function SignUp() {
         // Simple validation
         if (formData.password !== formData.confirmPassword) {
             toast({
-                // title: getTranslation("error", language),
-                // description: getTranslation("passwordsDoNotMatch", language),
+                title: getTranslation("error", language),
+                description: getTranslation("passwordsDoNotMatch", language),
                 variant: "destructive",
             });
             return;
@@ -58,16 +58,16 @@ export default function SignUp() {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             toast({
-                // title: getTranslation("success", language),
-                // description: getTranslation("accountCreated", language),
+                title: getTranslation("success", language),
+                description: getTranslation("accountCreated", language),
             });
 
             navigate("/auth/login");
         } catch (error) {
             console.error("Signup error:", error);
             toast({
-                // title: getTranslation("error", language),
-                // description: getTranslation("signupFailed", language),
+                title: getTranslation("error", language),
+                description: getTranslation("signupFailed", language),
                 variant: "destructive",
             });
         } finally {
@@ -80,27 +80,27 @@ export default function SignUp() {
             <Card>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold text-center">
-                        {/* {getTranslation("createAccount", language)} */}
+                        {getTranslation("createAccount", language)}
                     </CardTitle>
                     <CardDescription className="text-center">
-                        {/* {getTranslation("enterDetailsBelow", language)} */}
+                        {getTranslation("enterDetailsBelow", language)}
                     </CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            {/* <Label htmlFor="name">{getTranslation("fullName", language)}</Label> */}
+                            <Label htmlFor="name">{getTranslation("fullName", language)}</Label>
                             <Input
                                 id="name"
                                 name="name"
-                                // placeholder={getTranslation("enterName", language)}
+                                placeholder={getTranslation("enterName", language)}
                                 required
                                 value={formData.name}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className="space-y-2">
-                            {/* <Label htmlFor="email">{getTranslation("email", language)}</Label> */}
+                            <Label htmlFor="email">{getTranslation("email", language)}</Label>
                             <Input
                                 id="email"
                                 name="email"
@@ -112,7 +112,7 @@ export default function SignUp() {
                             />
                         </div>
                         <div className="space-y-2">
-                            {/* <Label htmlFor="phone">{getTranslation("phone", language)}</Label> */}
+                            <Label htmlFor="phone">{getTranslation("phone", language)}</Label>
                             <Input
                                 id="phone"
                                 name="phone"
@@ -123,31 +123,31 @@ export default function SignUp() {
                             />
                         </div>
                         <div className="space-y-2">
-                            {/* <Label htmlFor="location">{getTranslation("location", language)}</Label> */}
+                            <Label htmlFor="location">{getTranslation("location", language)}</Label>
                             <Input
                                 id="location"
                                 name="location"
-                                // placeholder={getTranslation("enterLocation", language)}
+                                placeholder={getTranslation("enterLocation", language)}
                                 required
                                 value={formData.location}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className="space-y-2">
-                            {/* <Label>{getTranslation("role", language)}</Label> */}
+                            <Label>{getTranslation("role", language)}</Label>
                             <RadioGroup value={formData.role} onValueChange={handleRoleChange}>
                                 <div className="flex items-center space-x-2">
                                     <RadioGroupItem value="consumer" id="consumer" />
-                                    {/* <Label htmlFor="consumer">{getTranslation("consumer", language)}</Label> */}
+                                    <Label htmlFor="consumer">{getTranslation("consumer", language)}</Label>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <RadioGroupItem value="producer" id="producer" />
-                                    {/* <Label htmlFor="producer">{getTranslation("producer", language)}</Label> */}
+                                    <Label htmlFor="producer">{getTranslation("producer", language)}</Label>
                                 </div>
                             </RadioGroup>
                         </div>
                         <div className="space-y-2">
-                            {/* <Label htmlFor="password">{getTranslation("password", language)}</Label> */}
+                            <Label htmlFor="password">{getTranslation("password", language)}</Label>
                             <Input
                                 id="password"
                                 name="password"
@@ -158,7 +158,7 @@ export default function SignUp() {
                             />
                         </div>
                         <div className="space-y-2">
-                            {/* <Label htmlFor="confirmPassword">{getTranslation("confirmPassword", language)}</Label> */}
+                            <Label htmlFor="confirmPassword">{getTranslation("confirmPassword", language)}</Label>
                             <Input
                                 id="confirmPassword"
                                 name="confirmPassword"
@@ -171,12 +171,12 @@ export default function SignUp() {
                     </CardContent>
                     <CardFooter className="flex flex-col">
                         <Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={isLoading}>
-                            {/* {isLoading ? getTranslation("creatingAccount", language) : getTranslation("signUp", language)} */}
+                            {isLoading ? getTranslation("creatingAccount", language) : getTranslation("signUp", language)}
                         </Button>
                         <div className="mt-4 text-center text-sm">
-                            {/* {getTranslation("alreadyHaveAccount", language)}{" "} */}
+                            {getTranslation("alreadyHaveAccount", language)}{" "}
                             <Link to="/auth/login" className="text-farm-green hover:underline">
-                                {/* {getTranslation("login", language)} */}
+                                {getTranslation("login", language)}
                             </Link>
                         </div>
                     </CardFooter>
