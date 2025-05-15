@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MapPin, Search, Globe } from "lucide-react";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 import {
     DropdownMenu,
     DropdownMenuContent,

@@ -21,7 +21,7 @@ import {
     DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
-// import { getTranslation } from "@/utils/translations";
+import { getTranslation } from "@/utils/translations";
 
 export default function Navbar() {
     const [searchVisible, setSearchVisible] = useState(false);
@@ -47,7 +47,7 @@ export default function Navbar() {
                         <NavigationMenuItem>
                             <Link to="/farms">
                                 <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                                    {/* {getTranslation("farms", language)} */}
+                                    {getTranslation("farms", language)}
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
@@ -130,7 +130,7 @@ export default function Navbar() {
                         <NavigationMenuItem>
                             <Link to="/subscriptions">
                                 <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                                    {/* {getTranslation("subscriptionBoxes", language)} */}
+                                    {getTranslation("subscriptionBoxes", language)}
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
@@ -138,7 +138,7 @@ export default function Navbar() {
                         <NavigationMenuItem>
                             <Link to="/pickup">
                                 <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                                    {/* {getTranslation("pickupLocations", language)} */}
+                                    {getTranslation("pickupLocations", language)}
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
@@ -166,8 +166,7 @@ export default function Navbar() {
                         <div className="relative w-full md:w-auto">
                             <Input
                                 type="search"
-                                placeholder=""
-                                // {getTranslation("searchPlaceholder", language)}
+                                placeholder={getTranslation("searchPlaceholder", language)}
                                 className="w-full md:w-[200px] pr-8"
                                 autoFocus
                                 onBlur={() => setSearchVisible(false)}
@@ -182,7 +181,7 @@ export default function Navbar() {
                         >
                             <Search className="h-5 w-5" />
                             <span className="sr-only">
-                                {/* {getTranslation("search", language)} */}
+                                {getTranslation("search", language)}
                             </span>
                         </Button>
                     )}
@@ -192,7 +191,7 @@ export default function Navbar() {
                             <Button variant="ghost" size="icon">
                                 <User className="h-5 w-5" />
                                 <span className="sr-only">
-                                    {/* {getTranslation("account", language)} */}
+                                    {getTranslation("account", language)}
                                 </span>
                             </Button>
                         </DropdownMenuTrigger>
@@ -201,18 +200,18 @@ export default function Navbar() {
                                 <>
                                     <Link to="/profile">
                                         <DropdownMenuItem>
-                                            {/* {getTranslation("myProfile", language)} */}
+                                            {getTranslation("myProfile", language)}
                                         </DropdownMenuItem>
                                     </Link>
                                     <Link to="/orders">
                                         <DropdownMenuItem>
-                                            {/* {getTranslation("myOrders", language)} */}
+                                            {getTranslation("myOrders", language)}
                                         </DropdownMenuItem>
                                     </Link>
                                     <DropdownMenuSeparator />
                                     <Link to="/">
                                         <DropdownMenuItem>
-                                            {/* {getTranslation("logout", language)} */}
+                                            {getTranslation("logout", language)}
                                         </DropdownMenuItem>
                                     </Link>
                                 </>
@@ -220,12 +219,12 @@ export default function Navbar() {
                                 <>
                                     <Link to="/auth/login">
                                         <DropdownMenuItem>
-                                            {/* {getTranslation("login", language)} */}
+                                            {getTranslation("login", language)}
                                         </DropdownMenuItem>
                                     </Link>
                                     <Link to="/auth/signup">
                                         <DropdownMenuItem>
-                                            {/* {getTranslation("signUp", language)} */}
+                                            {getTranslation("signUp", language)}
                                         </DropdownMenuItem>
                                     </Link>
                                 </>
@@ -236,14 +235,14 @@ export default function Navbar() {
                     <Button variant="ghost" size="icon">
                         <ShoppingCart className="h-5 w-5" />
                         <span className="sr-only">
-                            {/* {getTranslation("cart", language)} */}
+                            {getTranslation("cart", language)}
                         </span>
                     </Button>
 
                     {!isLoggedIn && (
                         <Link to="/auth/login">
                             <Button className="hidden md:flex bg-farm-green hover:bg-farm-green-dark">
-                                {/* {getTranslation("signIn", language)} */}
+                                {getTranslation("signIn", language)}
                             </Button>
                         </Link>
                     )}
