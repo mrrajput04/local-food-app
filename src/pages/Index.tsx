@@ -4,13 +4,13 @@ import { farms, products, subscriptionBoxes, pickupLocations } from "@/data/mock
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
-// import HowItWorks from "@/components/home/HowItWorks";
-// import FeaturedFarms from "@/components/home/FeaturedFarms";
-// import FeaturedProducts from "@/components/home/FeaturedProducts";
-// import SubscriptionAndPickup from "@/components/home/SubscriptionAndPickup";
-// import Testimonials from "@/components/home/Testimonials";
-// import CallToAction from "@/components/home/CallToAction";
-// import LanguageSelector from "@/components/language/LanguageSelector";
+import HowItWorks from "@/components/home/HowItWorks";
+import FeaturedFarms from "@/components/home/FeaturedFarms";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import SubscriptionAndPickup from "@/components/home/SubscriptionAndPickup";
+import Testimonials from "@/components/home/Testimonials";
+import CallToAction from "@/components/home/CallToAction";
+import LanguageSelector from "@/components/language/LanguageSelector";
 
 const Index = () => {
     // Display only featured items on homepage
@@ -24,15 +24,15 @@ const Index = () => {
 
             <main className="flex-1">
                 <Hero />
-                {/* <HowItWorks />
+                <HowItWorks />
                 <FeaturedFarms farms={featuredFarms} />
                 <FeaturedProducts products={featuredProducts} />
                 <SubscriptionAndPickup
                     subscriptions={featuredSubscriptions}
                     pickupLocations={pickupLocations}
                 />
-                <Testimonials /> 
-                <CallToAction /> */}
+                <Testimonials />
+                <CallToAction />
             </main>
 
             <Footer />
