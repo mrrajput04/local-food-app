@@ -13,30 +13,32 @@ import Profile from "./pages/Profile";
 import InventoryManagement from "./pages/InventoryManagement";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
+import Education from "./pages/Education";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/signup" element={<SignUp />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/inventory" element={<InventoryManagement />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </LanguageProvider>
-  </QueryClientProvider>
+	<QueryClientProvider client={queryClient}>
+		<LanguageProvider>
+			<TooltipProvider>
+				<Toaster />
+				<Sonner />
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Index />} />
+						<Route path="/auth/login" element={<Login />} />
+						<Route path="/auth/signup" element={<SignUp />} />
+						<Route path="/profile" element={<Profile />} />
+						<Route path="/orders" element={<Orders />} />
+						<Route path="/inventory" element={<InventoryManagement />} />
+						<Route path="/products" element={<Products />} />
+						<Route path="/education" element={<Education />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</BrowserRouter>
+			</TooltipProvider>
+		</LanguageProvider>
+	</QueryClientProvider>
 );
 
 export default App;

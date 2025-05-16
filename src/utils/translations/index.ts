@@ -13,51 +13,54 @@ import { messageTranslations } from './messages';
 import { footerTranslations } from './footer';
 import { orderTranslations } from './orders';
 import { inventoryTranslations } from './inventory';
+import { educationTranslations } from './education';
 
 // Combine all translation objects
 export const translations = {
-    ...commonTranslations,
-    ...productTranslations,
-    ...farmTranslations,
-    ...homeTranslations,
-    ...pickupTranslations,
-    ...subscriptionTranslations,
-    ...accountTranslations,
-    ...profileTranslations,
-    ...messageTranslations,
-    ...footerTranslations,
-    ...orderTranslations,
-    ...inventoryTranslations
+	...commonTranslations,
+	...productTranslations,
+	...farmTranslations,
+	...homeTranslations,
+	...pickupTranslations,
+	...subscriptionTranslations,
+	...accountTranslations,
+	...profileTranslations,
+	...messageTranslations,
+	...footerTranslations,
+	...orderTranslations,
+	...inventoryTranslations,
+	...educationTranslations
 };
 
 // Function to get translations
 export function getTranslation(key: string, language: string): string {
-    if (!translations[key as keyof typeof translations]) {
-        console.warn(`Translation key "${key}" not found`);
-        return key;
-    }
+	if (!translations[key as keyof typeof translations]) {
+		console.warn(`Translation key "${key}" not found`);
+		return key;
+	}
 
-    const translationObj = translations[key as keyof typeof translations];
-    if (!translationObj[language as keyof typeof translationObj]) {
-        console.warn(`Translation for key "${key}" in language "${language}" not found`);
-        return translationObj.english || key;
-    }
+	const translationObj = translations[key as keyof typeof translations];
+	if (!translationObj[language as keyof typeof translationObj]) {
+		console.warn(`Translation for key "${key}" in language "${language}" not found`);
+		return translationObj.english || key;
+	}
 
-    return translationObj[language as keyof typeof translationObj];
+	return translationObj[language as keyof typeof translationObj];
 }
 
 // Export all translation objects for direct access if needed
 export {
-    commonTranslations,
-    productTranslations,
-    farmTranslations,
-    homeTranslations,
-    pickupTranslations,
-    subscriptionTranslations,
-    accountTranslations,
-    profileTranslations,
-    messageTranslations,
-    footerTranslations,
-    orderTranslations,
-    inventoryTranslations
+	commonTranslations,
+	productTranslations,
+	farmTranslations,
+	homeTranslations,
+	pickupTranslations,
+	subscriptionTranslations,
+	accountTranslations,
+	profileTranslations,
+	messageTranslations,
+	footerTranslations,
+	orderTranslations,
+	inventoryTranslations,
+	educationTranslations
 };
