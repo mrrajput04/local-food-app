@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import ProductCard from "@/components/products/ProductCard";
 import { Product } from "@/types";
@@ -19,7 +20,7 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
 						<h2 className="text-3xl font-bold">{getTranslation("freshProducts", language)}</h2>
 						<p className="text-muted-foreground mt-2">{getTranslation("seasonalFavorites", language)}</p>
 					</div>
-					<Link to="/products" className="text-primary hover:text-primary/80 font-medium">
+					<Link to="/products" className="text-primary hover:text-primary/80 font-medium animated-underline">
 						{getTranslation("viewAllProducts", language)} →
 					</Link>
 				</div>

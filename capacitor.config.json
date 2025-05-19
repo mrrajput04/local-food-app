@@ -1,0 +1,16 @@
+
+{
+  "appId": "app.lovable.f0b1e2fa1a1d4ee7b4569eb668312c0e",
+  "appName": "local-bite-direct",
+  "webDir": "dist",
+  "server": {
+    "url": "https://f0b1e2fa-1a1d-4ee7-b456-9eb668312c0e.lovableproject.com?forceHideBadge=true",
+    "cleartext": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

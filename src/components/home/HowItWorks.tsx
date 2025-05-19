@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search, Box, CalendarClock } from "lucide-react";
@@ -38,7 +39,7 @@ export default function HowItWorks() {
 				</div>
 
 				<div className="mt-12 text-center">
-					<Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+					<Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform duration-200 ease-in-out hover:scale-105">
 						<Link to="/how-it-works">Learn More</Link>
 					</Button>
 				</div>

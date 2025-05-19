@@ -2,6 +2,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { MapPin } from "lucide-react";
+import { Link } from "react-router-dom"; // Added Link import
 
 const PickupLocationsPage = () => {
 	return (
@@ -43,7 +44,7 @@ const PickupLocationsPage = () => {
 					</div>
 				</div>
 				<p className="text-center mt-12 text-lg text-muted-foreground">
-					New pickup locations are added regularly. Check back for updates or contact us to suggest a location!
+					New pickup locations are added regularly. Check back for updates or <Link to="/contact" className="text-primary hover:text-primary/80 animated-underline">contact us</Link> to suggest a location!
 				</p>
 			</main>
 			<Footer />
