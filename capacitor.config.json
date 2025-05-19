@@ -1,11 +1,10 @@
-
 {
-  "appId": "app.lovable.f0b1e2fa1a1d4ee7b4569eb668312c0e",
-  "appName": "local-bite-direct",
+  "appId": "com.freshroots.localfood",
+  "appName": "Local Food Connector",
   "webDir": "dist",
   "server": {
-    "url": "https://f0b1e2fa-1a1d-4ee7-b456-9eb668312c0e.lovableproject.com?forceHideBadge=true",
-    "cleartext": true
+    "url": "https://local-food-app.vercel.app",
+    "cleartext": false
   },
   "plugins": {
     "SplashScreen": {
