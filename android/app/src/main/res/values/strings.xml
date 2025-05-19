@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">local-food-connector</string>
+    <string name="title_activity_main">local-food-connector</string>
+    <string name="package_name">com.freshroots.localfood</string>
+    <string name="custom_url_scheme">com.freshroots.localfood</string>
+</resources>
