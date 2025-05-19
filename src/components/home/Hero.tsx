@@ -51,7 +51,7 @@ export default function Hero() {
 						onChange={(e) => setSearchLocation(e.target.value)}
 					/>
 					<MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-					<Button className="absolute right-1 top-1/2 -translate-y-1/2 bg-accent hover:bg-accent/90 text-accent-foreground">
+					<Button className="absolute right-1 top-1/2 -translate-y-1/2 bg-accent hover:bg-accent/90 text-accent-foreground transition-transform duration-200 ease-in-out hover:scale-105">
 						<Search className="mr-2 h-4 w-4" />
 						Find Farms
 					</Button>

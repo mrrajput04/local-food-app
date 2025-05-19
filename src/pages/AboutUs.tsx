@@ -26,11 +26,11 @@ const AboutUs = () => {
 					</p>
 					<h2 className="text-2xl font-semibold mt-8 mb-4 text-farm-green">Our Values</h2>
 					<ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-						<li><span className="font-medium">Community:</span> Fostering strong relationships between producers and consumers.</li>
-						<li><span className="font-medium">Sustainability:</span> Promoting eco-friendly farming and reducing food miles.</li>
-						<li><span className="font-medium">Transparency:</span> Providing clear information about food origins and practices.</li>
-						<li><span className="font-medium">Quality:</span> Ensuring access to the freshest, highest-quality local produce.</li>
-						<li><span className="font-medium">Support:</span> Championing local farmers and their livelihoods.</li>
+						<li className="hover:text-primary transition-colors duration-200"><span className="font-medium">Community:</span> Fostering strong relationships between producers and consumers.</li>
+						<li className="hover:text-primary transition-colors duration-200"><span className="font-medium">Sustainability:</span> Promoting eco-friendly farming and reducing food miles.</li>
+						<li className="hover:text-primary transition-colors duration-200"><span className="font-medium">Transparency:</span> Providing clear information about food origins and practices.</li>
+						<li className="hover:text-primary transition-colors duration-200"><span className="font-medium">Quality:</span> Ensuring access to the freshest, highest-quality local produce.</li>
+						<li className="hover:text-primary transition-colors duration-200"><span className="font-medium">Support:</span> Championing local farmers and their livelihoods.</li>
 					</ul>
 				</div>
 			</main>

@@ -20,7 +20,7 @@ export default function FeaturedFarms({ farms }: FeaturedFarmsProps) {
 						<h2 className="text-3xl font-bold">{getTranslation("featuredFarms", language)}</h2>
 						<p className="text-muted-foreground mt-2">{getTranslation("discoverLocalFarms", language)}</p>
 					</div>
-					<Link to="/farms" className="text-primary hover:text-primary/80 font-medium">
+					<Link to="/farms" className="text-primary hover:text-primary/80 font-medium animated-underline">
 						{getTranslation("viewAllFarms", language)} →
 					</Link>
 				</div>

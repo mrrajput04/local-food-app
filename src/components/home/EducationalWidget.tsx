@@ -41,7 +41,7 @@ const EducationalWidget = () => {
 							<p className="text-muted-foreground">{tips[0]}</p>
 						</CardContent>
 						<CardFooter>
-							<Button variant="ghost" size="sm" className="text-primary hover:text-primary/80" asChild>
+							<Button variant="ghost" size="sm" className="text-primary hover:text-primary/80 transition-transform duration-200 ease-in-out hover:scale-105" asChild>
 								<Link to="/education">{getTranslation("learnMore", language)} →</Link>
 							</Button>
 						</CardFooter>
@@ -69,7 +69,7 @@ const EducationalWidget = () => {
 							</div>
 						</CardContent>
 						<CardFooter className="justify-center">
-							<Button variant="outline" size="sm" asChild>
+							<Button variant="outline" size="sm" asChild className="transition-transform duration-200 ease-in-out hover:scale-105">
 								<Link to="/impact">{getTranslation("trackYourImpact", language)}</Link>
 							</Button>
 						</CardFooter>

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -15,10 +16,10 @@ export default function CallToAction() {
 						{getTranslation("signUpDescription", language)}
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
-						<Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+						<Button className="bg-primary hover:bg-primary/90 text-primary-foreground transition-transform duration-200 ease-in-out hover:scale-105" asChild>
 							<Link to="/auth/signup">{getTranslation("createAccount", language)}</Link>
 						</Button>
-						<Button variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary">
+						<Button variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary transition-transform duration-200 ease-in-out hover:scale-105" asChild>
 							<Link to="/farms">{getTranslation("browseFarms", language)}</Link>
 						</Button>
 					</div>
