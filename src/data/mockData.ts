@@ -1,4 +1,4 @@
-import { Farm, Product, SubscriptionBox, PickupLocation, Order } from "@/types";
+import { Farm, Product, SubscriptionBox, PickupLocation, Order, Review } from "@/types";
 
 // Farms Data
 export const farms: Farm[] = [
@@ -230,3 +230,83 @@ export const orders: Order[] = [
 		farmId: "farm3"
 	}
 ];
+
+// Reviews Data
+export const reviews: Review[] = [
+	{
+		id: "review1",
+		userId: "userTest1",
+		userName: "Alice Wonderland",
+		entityId: "prod1",
+		entityType: "product",
+		rating: 5,
+		comment: "Absolutely delicious carrots! So fresh and crunchy.",
+		createdAt: "2025-05-10T10:00:00.000Z",
+	},
+	{
+		id: "review2",
+		userId: "userTest2",
+		userName: "Bob The Builder",
+		entityId: "prod1",
+		entityType: "product",
+		rating: 4,
+		comment: "Great quality, a bit pricey but worth it for organic.",
+		createdAt: "2025-05-11T14:30:00.000Z",
+	},
+	{
+		id: "review3",
+		userId: "userTest1",
+		userName: "Alice Wonderland",
+		entityId: "farm1",
+		entityType: "farm",
+		rating: 5,
+		comment: "Green Valley Organics is my go-to for fresh produce. Amazing quality and friendly staff!",
+		createdAt: "2025-05-12T09:15:00.000Z",
+	},
+];
+
+// Function to add a review and update related entity's average rating and review count
+export function addReview(reviewData: {
+	entityId: string;
+	entityType: "product" | "farm";
+	rating: number;
+	comment: string;
+	userName?: string; // Optional, defaults if not provided
+	userId?: string; // Optional, defaults if not provided
+}): Review {
+	const newReview: Review = {
+		id: `review-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+		userId: reviewData.userId || "mockUserCurrent", // Placeholder for current user
+		userName: reviewData.userName || "Anonymous User", // Placeholder
+		createdAt: new Date().toISOString(),
+		entityId: reviewData.entityId,
+		entityType: reviewData.entityType,
+		rating: reviewData.rating,
+		comment: reviewData.comment,
+	};
+	reviews.unshift(newReview); // Add to the beginning of the array
+
+	// Update average rating and review count for the entity
+	if (newReview.entityType === "product") {
+		const product = products.find(p => p.id === newReview.entityId);
+		if (product) {
+			const productReviews = reviews.filter(r => r.entityId === product.id && r.entityType === "product");
+			const totalRating = productReviews.reduce((sum, r) => sum + r.rating, 0);
+			product.averageRating = productReviews.length > 0 ? parseFloat((totalRating / productReviews.length).toFixed(1)) : 0;
+			product.reviewCount = productReviews.length;
+		}
+	} else if (newReview.entityType === "farm") {
+		const farm = farms.find(f => f.id === newReview.entityId);
+		if (farm) {
+			const farmReviews = reviews.filter(r => r.entityId === farm.id && r.entityType === "farm");
+			const totalRating = farmReviews.reduce((sum, r) => sum + r.rating, 0);
+			farm.rating = farmReviews.length > 0 ? parseFloat((totalRating / farmReviews.length).toFixed(1)) : 0;
+			farm.reviewCount = farmReviews.length;
+		}
+	}
+	// console.log('Added review:', newReview);
+	// console.log('Updated reviews array:', reviews);
+	// if (newReview.entityType === "product") console.log('Updated product:', products.find(p=>p.id === newReview.entityId));
+	// if (newReview.entityType === "farm") console.log('Updated farm:', farms.find(f=>f.id === newReview.entityId));
+	return newReview;
+}

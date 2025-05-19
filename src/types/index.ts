@@ -76,3 +76,14 @@ export interface OrderItem {
 	quantity: number;
 	price: number;
 }
+
+export interface Review {
+	id: string;
+	userId: string; // In a real app, this would be the logged-in user's ID
+	userName: string; // User's display name
+	entityId: string; // ID of the product or farm being reviewed
+	entityType: "product" | "farm";
+	rating: number; // 1-5 stars
+	comment: string;
+	createdAt: string; // ISO date string
+}
