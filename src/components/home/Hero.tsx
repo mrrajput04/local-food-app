@@ -20,7 +20,7 @@ export default function Hero() {
 		<section className="relative bg-gradient-to-br from-primary via-farm-green to-farm-green-light text-primary-foreground overflow-hidden">
 			<div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-cover bg-center opacity-20"></div>
 			<div className="container relative z-10 py-20 md:py-32 flex flex-col items-center text-center">
-				<div className="absolute top-4 right-4">
+				{/* <div className="absolute top-4 right-4">
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
 							<Button variant="ghost" size="sm" className="text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center gap-2">
@@ -34,7 +34,7 @@ export default function Hero() {
 							<LanguageSelector />
 						</DropdownMenuContent>
 					</DropdownMenu>
-				</div>
+				</div> */}
 
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 max-w-3xl animate-fade-in">
 					Fresh From Local Farms To Your Table
