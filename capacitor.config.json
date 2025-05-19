@@ -2,10 +2,6 @@
   "appId": "com.freshroots.localfood",
   "appName": "Local Food Connector",
   "webDir": "dist",
-  "server": {
-    "url": "https://local-food-app.vercel.app",
-    "cleartext": false
-  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
