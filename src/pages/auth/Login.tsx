@@ -1,22 +1,24 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // useNavigate removed as navigation is handled by AuthContext
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "@/hooks/use-toast";
+// toast import removed as it's handled by AuthContext
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTranslation } from "@/utils/translations";
+import { useAuth } from "@/contexts/AuthContext"; // Import useAuth
 
 export default function Login() {
-	const navigate = useNavigate();
+	// navigate import removed
 	const { language } = useLanguage();
-	const [isLoading, setIsLoading] = useState(false);
+	const { login, isLoading: authIsLoading } = useAuth(); // Use login and isLoading from useAuth
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	});
+	const [isSubmitting, setIsSubmitting] = useState(false); // Local submitting state
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -25,31 +27,10 @@ export default function Login() {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setIsLoading(true);
-
-		try {
-			// Mock login - In a real app, this would call an API
-			console.log("Logging in with:", formData);
-
-			// Simulate API call
-			await new Promise(resolve => setTimeout(resolve, 1000));
-
-			toast({
-				title: getTranslation("success", language),
-				description: getTranslation("loginSuccessful", language),
-			});
-
-			navigate("/profile");
-		} catch (error) {
-			console.error("Login error:", error);
-			toast({
-				title: getTranslation("error", language),
-				description: getTranslation("loginFailed", language),
-				variant: "destructive",
-			});
-		} finally {
-			setIsLoading(false);
-		}
+		setIsSubmitting(true);
+		await login(formData.email, formData.password);
+		setIsSubmitting(false);
+		// Navigation is handled by AuthContext's onAuthStateChange
 	};
 
 	return (
@@ -76,6 +57,7 @@ export default function Login() {
 									required
 									value={formData.email}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
@@ -87,6 +69,7 @@ export default function Login() {
 									required
 									value={formData.password}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="text-right">
@@ -96,8 +79,8 @@ export default function Login() {
 							</div>
 						</CardContent>
 						<CardFooter className="flex flex-col">
-							<Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={isLoading}>
-								{isLoading ? getTranslation("loggingIn", language) : getTranslation("login", language)}
+							<Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={authIsLoading || isSubmitting}>
+								{(authIsLoading || isSubmitting) ? getTranslation("loggingIn", language) : getTranslation("login", language)}
 							</Button>
 							<div className="mt-4 text-center text-sm">
 								{getTranslation("noAccount", language)}{" "}
