@@ -23,40 +23,43 @@ import SustainabilityPage from "./pages/SustainabilityPage";
 import FaqPage from "./pages/FaqPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
+import { AppProviders } from './contexts/AppProviders';
 
 const queryClient = new QueryClient();
 
 const App = () => (
-	<QueryClientProvider client={queryClient}>
-		<LanguageProvider>
-			<TooltipProvider>
-				<Toaster />
-				<Sonner />
-				<BrowserRouter>
-					<Routes>
-						<Route path="/" element={<Index />} />
-						<Route path="/auth/login" element={<Login />} />
-						<Route path="/auth/signup" element={<SignUp />} />
-						<Route path="/profile" element={<Profile />} />
-						<Route path="/orders" element={<Orders />} />
-						<Route path="/inventory" element={<InventoryManagement />} />
-						<Route path="/products" element={<Products />} />
-						<Route path="/education" element={<Education />} />
-						<Route path="/about" element={<AboutUs />} />
-						<Route path="/farms" element={<FarmsPage />} />
-						<Route path="/subscriptions" element={<SubscriptionsPage />} />
-						<Route path="/pickup" element={<PickupLocationsPage />} />
-						<Route path="/how-it-works" element={<HowItWorksPage />} />
-						<Route path="/sustainability" element={<SustainabilityPage />} />
-						<Route path="/faq" element={<FaqPage />} />
-						<Route path="/privacy" element={<PrivacyPolicyPage />} />
-						<Route path="/terms" element={<TermsOfServicePage />} />
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-				</BrowserRouter>
-			</TooltipProvider>
-		</LanguageProvider>
-	</QueryClientProvider>
+	<AppProviders>
+		<QueryClientProvider client={queryClient}>
+			<LanguageProvider>
+				<TooltipProvider>
+					<Toaster />
+					<Sonner />
+					<BrowserRouter>
+						<Routes>
+							<Route path="/" element={<Index />} />
+							<Route path="/auth/login" element={<Login />} />
+							<Route path="/auth/signup" element={<SignUp />} />
+							<Route path="/profile" element={<Profile />} />
+							<Route path="/orders" element={<Orders />} />
+							<Route path="/inventory" element={<InventoryManagement />} />
+							<Route path="/products" element={<Products />} />
+							<Route path="/education" element={<Education />} />
+							<Route path="/about" element={<AboutUs />} />
+							<Route path="/farms" element={<FarmsPage />} />
+							<Route path="/subscriptions" element={<SubscriptionsPage />} />
+							<Route path="/pickup" element={<PickupLocationsPage />} />
+							<Route path="/how-it-works" element={<HowItWorksPage />} />
+							<Route path="/sustainability" element={<SustainabilityPage />} />
+							<Route path="/faq" element={<FaqPage />} />
+							<Route path="/privacy" element={<PrivacyPolicyPage />} />
+							<Route path="/terms" element={<TermsOfServicePage />} />
+							<Route path="*" element={<NotFound />} />
+						</Routes>
+					</BrowserRouter>
+				</TooltipProvider>
+			</LanguageProvider>
+		</QueryClientProvider>
+	</AppProviders>
 );
 
 export default App;
