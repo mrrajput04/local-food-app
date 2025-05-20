@@ -1,23 +1,26 @@
 
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // useNavigate removed
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "@/hooks/use-toast"; // Keep toast for password mismatch
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTranslation } from "@/utils/translations";
+import { useAuth } from "@/contexts/AuthContext"; // Import useAuth
 
 type UserRole = "consumer" | "producer";
 
 export default function SignUp() {
-	const navigate = useNavigate();
+	// navigate import removed
 	const { language } = useLanguage();
-	const [isLoading, setIsLoading] = useState(false);
+	const { signUp, isLoading: authIsLoading } = useAuth(); // Use signUp and isLoading from useAuth
+	const [isSubmitting, setIsSubmitting] = useState(false); // Local submitting state
+
 	const [formData, setFormData] = useState({
-		name: "",
+		name: "", // We'll pass this in signUp options
 		email: "",
 		phone: "",
 		password: "",
@@ -47,31 +50,19 @@ export default function SignUp() {
 			return;
 		}
 
-		setIsLoading(true);
-
-		try {
-			// Mock signup - In a real app, this would call an API
-			console.log("Signing up with:", formData);
-
-			// Simulate API call
-			await new Promise(resolve => setTimeout(resolve, 1000));
-
-			toast({
-				title: getTranslation("success", language),
-				description: getTranslation("accountCreated", language),
-			});
-
-			navigate("/auth/login");
-		} catch (error) {
-			console.error("Signup error:", error);
-			toast({
-				title: getTranslation("error", language),
-				description: getTranslation("signupFailed", language),
-				variant: "destructive",
-			});
-		} finally {
-			setIsLoading(false);
-		}
+		setIsSubmitting(true);
+		// Pass additional data (name, role, etc.) in the options for Supabase signUp
+		// Supabase stores this in `raw_user_meta_data`
+		await signUp(formData.email, formData.password, {
+			data: {
+				full_name: formData.name, // Supabase convention often uses `full_name`
+				phone: formData.phone,
+				location: formData.location,
+				role: formData.role,
+			}
+		});
+		setIsSubmitting(false);
+		// Navigation is handled by AuthContext or Supabase redirects
 	};
 
 	return (
@@ -97,6 +88,7 @@ export default function SignUp() {
 									required
 									value={formData.name}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
@@ -109,6 +101,7 @@ export default function SignUp() {
 									required
 									value={formData.email}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
@@ -120,6 +113,7 @@ export default function SignUp() {
 									placeholder="+1234567890"
 									value={formData.phone}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
@@ -131,17 +125,18 @@ export default function SignUp() {
 									required
 									value={formData.location}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
 								<Label>{getTranslation("role", language)}</Label>
 								<RadioGroup value={formData.role} onValueChange={handleRoleChange} className="pt-1">
 									<div className="flex items-center space-x-2">
-										<RadioGroupItem value="consumer" id="consumer" />
+										<RadioGroupItem value="consumer" id="consumer" disabled={authIsLoading || isSubmitting} />
 										<Label htmlFor="consumer" className="font-normal">{getTranslation("consumer", language)}</Label>
 									</div>
 									<div className="flex items-center space-x-2">
-										<RadioGroupItem value="producer" id="producer" />
+										<RadioGroupItem value="producer" id="producer" disabled={authIsLoading || isSubmitting} />
 										<Label htmlFor="producer" className="font-normal">{getTranslation("producer", language)}</Label>
 									</div>
 								</RadioGroup>
@@ -155,6 +150,7 @@ export default function SignUp() {
 									required
 									value={formData.password}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 							<div className="space-y-2">
@@ -166,12 +162,13 @@ export default function SignUp() {
 									required
 									value={formData.confirmPassword}
 									onChange={handleChange}
+									disabled={authIsLoading || isSubmitting}
 								/>
 							</div>
 						</CardContent>
 						<CardFooter className="flex flex-col">
-							<Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={isLoading}>
-								{isLoading ? getTranslation("creatingAccount", language) : getTranslation("signUp", language)}
+							<Button className="w-full bg-farm-green hover:bg-farm-green-dark" type="submit" disabled={authIsLoading || isSubmitting}>
+								{(authIsLoading || isSubmitting) ? getTranslation("creatingAccount", language) : getTranslation("signUp", language)}
 							</Button>
 							<div className="mt-4 text-center text-sm">
 								{getTranslation("alreadyHaveAccount", language)}{" "}
