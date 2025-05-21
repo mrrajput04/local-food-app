@@ -106,6 +106,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - React for the UI framework
 - Tailwind CSS for styling
 - shadcn/ui for UI components
-
-
-This README provides a comprehensive overview of your Local Food App, including its features, tech stack, setup instructions, and project structure. It's formatted for clarity and includes emojis for better visual organization. The content is based on the actual codebase and structure visible in your project.
